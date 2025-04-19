@@ -1,1 +1,99 @@
-//Kerjakan soal nomor 2 disini (Hapus komentar ini)
+#include <iostream>
+#include <string>
+#include <iomanip> // untuk setw dan setfill
+using namespace std;
+
+int main() {
+    string kode_parkir;
+    int jam_keluar, menit_keluar;
+
+    cout << "Masukkan kode parkir (10 digit): ";
+    cin >> kode_parkir;
+
+    cout << "Masukkan jam keluar (format HHMM, contoh 1530): ";
+    int waktu_keluar;
+    cin >> waktu_keluar;
+
+    // Ambil jenis kendaraan dari digit 1-2
+    string jenis_kendaraan_kode = kode_parkir.substr(0, 2);
+    string jenis_kendaraan = "";
+    int tarif_pertama = 0;
+    int tarif_selanjutnya = 0;
+
+    // Identifikasi jenis kendaraan dan tarifnya
+    if (jenis_kendaraan_kode == "10") {
+        jenis_kendaraan = "Mobil Pribadi";
+        tarif_pertama = 5000;
+        tarif_selanjutnya = 3000;
+    } else if (jenis_kendaraan_kode == "20") {
+        jenis_kendaraan = "Motor";
+        tarif_pertama = 3000;
+        tarif_selanjutnya = 2000;
+    } else if (jenis_kendaraan_kode == "30") {
+        jenis_kendaraan = "Bus";
+        tarif_pertama = 10000;
+        tarif_selanjutnya = 7000;
+    } else {
+        cout << "Kode kendaraan tidak valid." << endl;
+        return 0;
+    }
+
+    // Ambil waktu masuk dari digit 3-6
+    int jam_masuk = stoi(kode_parkir.substr(2, 2));
+    int menit_masuk = stoi(kode_parkir.substr(4, 2));
+
+    // Ambil lokasi dari digit 7-10
+    string lokasi_parkir = kode_parkir.substr(6, 4);
+
+    // Pisahkan jam dan menit keluar
+    jam_keluar = waktu_keluar / 100;
+    menit_keluar = waktu_keluar % 100;
+
+    // Hitung durasi parkir dalam menit
+    int total_masuk_menit = jam_masuk * 60 + menit_masuk;
+    int total_keluar_menit = jam_keluar * 60 + menit_keluar;
+    int durasi_menit = total_keluar_menit - total_masuk_menit;
+
+    if (durasi_menit <= 0) {
+        cout << "Jam keluar tidak valid." << endl;
+        return 0;
+    }
+
+    // Hitung durasi dalam jam (pembulatan ke atas jika ada menit)
+    int durasi_jam = durasi_menit / 60;
+    if (durasi_menit % 60 > 0) {
+        durasi_jam += 1;
+    }
+
+    // Hitung biaya parkir
+    int total_biaya = tarif_pertama;
+    if (durasi_jam > 1) {
+        total_biaya += (durasi_jam - 1) * tarif_selanjutnya;
+    }
+
+    // Tampilkan hasil
+    cout << "\n==== Informasi Parkir ====\n";
+    cout << "Jenis Kendaraan : " << jenis_kendaraan << endl;
+    cout << "Waktu Masuk     : " << setfill('0') << setw(2) << jam_masuk << ":" << setw(2) << menit_masuk << endl;
+    cout << "Waktu Keluar    : " << setfill('0') << setw(2) << jam_keluar << ":" << setw(2) << menit_keluar << endl;
+    cout << "Durasi Parkir   : " << durasi_jam << " jam" << endl;
+    cout << "Lokasi Parkir   : " << lokasi_parkir << endl;
+    cout << "Total Biaya     : Rp " << total_biaya << endl;
+
+    return 0;
+}
+
+/*
+Penjelasan Algoritma:
+1. Ambil input kode parkir (10 digit) dan waktu keluar dalam format HHMM.
+2. Kode parkir mengandung:
+   - Digit 1-2 : Jenis kendaraan (10, 20, 30)
+   - Digit 3-6 : Jam dan menit masuk
+   - Digit 7-10: Lokasi parkir
+3. Waktu keluar dipecah jadi jam dan menit.
+4. Hitung durasi parkir dalam menit, lalu ubah ke jam (dibulatkan ke atas).
+5. Hitung biaya parkir:
+   - Jam pertama sesuai tarif_pertama
+   - Jam berikutnya sesuai tarif_selanjutnya
+6. Cetak semua informasi dengan format rapi.
+*/
