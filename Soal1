@@ -1,1 +1,69 @@
-//Kerjakan soal nomor 1 disini (Hapus komentar ini)
+#include <iostream>
+using namespace std;
+
+int main() {
+    string nomorKartu;
+    int total = 0;
+
+    cout << "Masukkan nomor kartu digital: ";
+    cin >> nomorKartu;
+
+    int panjang = nomorKartu.length();
+
+    // Validasi jenis kartu berdasarkan panjang dan awalan
+    string jenis = "";
+    if (panjang == 14 && nomorKartu.substr(0, 2) == "65") {
+        jenis = "NUSANTARA";
+    } else if (panjang == 16 && (nomorKartu.substr(0, 2) == "77" || nomorKartu.substr(0, 2) == "78")) {
+        jenis = "GARUDA";
+    } else if (panjang == 15 && nomorKartu.substr(0, 2) == "91") {
+        jenis = "MERDEKA";
+    } else {
+        cout << "Nomor kartu tidak valid berdasarkan panjang dan awalan.\n";
+        return 0;
+    }
+
+    // Algoritma Validasi Nusantara
+    for (int i = panjang - 2; i >= 0; i -= 2) { // digit kedua dari belakang, selang dua
+        int angka = nomorKartu[i] - '0';
+        angka *= 2;
+        if (angka > 9) {
+            angka = (angka / 10) + (angka % 10);  // jumlahkan digitnya
+        }
+        total += angka;
+    }
+
+    for (int i = panjang - 1; i >= 0; i -= 2) { // digit yang tidak dikalikan
+        int angka = nomorKartu[i] - '0';
+        total += angka;
+    }
+
+    //Cek apakah total habis dibagi 10
+    cout << "Jenis kartu: " << jenis << endl;
+    if (total % 10 == 0) {
+        cout << "Status: NOMOR KARTU VALID" << endl;
+    } else {
+        cout << "Status: NOMOR KARTU TIDAK VALID" << endl;
+    }
+
+    return 0;
+}
+
+/*
+==================== ALGORITMA PENYELESAIAN =====================
+
+1. Input nomor kartu digital sebagai string agar bisa diakses per karakter.
+2. Hitung panjang dan awalan untuk menentukan jenis kartu:
+   - 14 digit diawali "65"  → NUSANTARA
+   - 16 digit diawali "77"/"78" → GARUDA
+   - 15 digit diawali "91"  → MERDEKA
+3. Lakukan validasi kartu dengan "Algoritma Validasi Nusantara":
+   a. Mulai dari digit kedua dari belakang, setiap dua digit dikalikan 2.
+   b. Jika hasil kali > 9, jumlahkan digit-digit hasilnya.
+   c. Total semua hasil digit yang dikalikan.
+   d. Tambahkan digit-digit yang tidak dikalikan (posisi ganjil dari belakang).
+4. Jika total akhir habis dibagi 10, kartu dianggap valid.
+5. Cetak jenis kartu dan status validasi.
+
+=================================================================
+*/
