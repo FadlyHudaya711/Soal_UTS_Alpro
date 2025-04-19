@@ -4,11 +4,10 @@
 using namespace std;
 
 int main() {
-    system("cls");  // Bersihkan layar (Windows)
-
-    string kode;     // Input kode parkir sebagai string
-    int keluar;      // Input waktu keluar (format HHMM)
-    int d[10];       // Array untuk menyimpan setiap digit kode sebagai angka
+    system("cls");
+    string kode; 
+    int keluar;
+    int d[10];
 
     int jenis, jamMasuk, menitMasuk, lokasi;
     int masukMenit, keluarMenit, durasi, jam;
@@ -43,7 +42,7 @@ int main() {
     if (keluarMenit < masukMenit) keluarMenit += 1440;
 
     durasi = keluarMenit - masukMenit;
-    jam = durasi / 60 + (durasi % 60 != 0);  // Bulatkan ke atas
+    jam = durasi / 60 + (durasi % 60 != 0);
 
     // Tentukan jenis kendaraan dan tarif
     if (jenis == 10) {
