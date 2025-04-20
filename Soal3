@@ -53,5 +53,17 @@ int main() {
     return 0;
 }
 
-
-
+/*
+ALGORITMA PENYELESAIAN:
+1. Minta input kode transaksi sebanyak 8 digit.
+2. Periksa apakah kode transaksi valid (antara 00000000 s.d. 99999999).
+   - Jika tidak valid, tampilkan "DATA TIDAK VALID" dan akhiri program.
+3. Pecah kode transaksi menjadi tiga bagian:
+   - Dua digit pertama menunjukkan jenis hari (1=Hari Kerja, 2=Akhir Pekan, 3=Hari Libur Nasional).
+   - Dua digit berikutnya menunjukkan jenis pelanggan (1=Biasa, 2=Silver, 3=Gold).
+   - Empat digit terakhir adalah kode belanja, dikalikan 100.000 untuk mendapatkan jumlah belanja dalam rupiah.
+4. Tentukan nama hari, jenis pelanggan, dan poin per 100.000 berdasarkan jenis hari dan jenis pelanggan.
+   - Jika jenis hari atau jenis pelanggan tidak valid, tampilkan "DATA TIDAK VALID" dan akhiri program.
+5. Hitung total poin = (jumlah belanja / 100.000) × poin.
+6. Tampilkan hasil berupa jenis hari, jenis pelanggan, jumlah belanja, dan total poin.
+*/
