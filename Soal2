@@ -70,7 +70,7 @@ int main() {
 }
 
 /*
-==================== ALGORITMA PENYELESAIAN ====================
+ALGORITMA PENYELESAIAN
 
 1. Minta pengguna memasukkan kode parkir 10 digit dan waktu keluar (HHMM).
 2. Validasi apakah panjang kode adalah 10 digit.
@@ -92,7 +92,5 @@ int main() {
    - Biaya awal untuk 1 jam pertama
    - Tambahan biaya per jam setelah jam pertama
 10. Tampilkan ringkasan: jenis kendaraan, waktu masuk dan keluar, durasi parkir, lokasi, dan total biaya.
-
-================================================================
 */
 
