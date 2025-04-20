@@ -28,7 +28,6 @@ int main() {
         d[i] = kode[i] - '0';
     }
 
-    // Ambil bagian-bagian dari kode
     jenis = d[0] * 10 + d[1];
     jamMasuk = d[2] * 10 + d[3];
     menitMasuk = d[4] * 10 + d[5];
@@ -44,7 +43,7 @@ int main() {
     durasi = keluarMenit - masukMenit;
     jam = durasi / 60 + (durasi % 60 != 0);
 
-    // Tentukan jenis kendaraan dan tarif
+    // Jenis kendaraan dan tarif
     if (jenis == 10) {
         nama = "Mobil Pribadi"; tarifawal = 5000; tariflanjut = 3000;
     } else if (jenis == 20) {
@@ -59,7 +58,6 @@ int main() {
     // Hitung total biaya
     total = tarifawal + (jam > 1 ? (jam - 1) * tariflanjut : 0);
 
-    // Output hasil
     cout << "\n--- Ringkasan Parkir ---\n";
     cout << "Jenis kendaraan: " << nama << endl;
     printf("Waktu masuk   : %02d:%02d\n", jamMasuk, menitMasuk);
