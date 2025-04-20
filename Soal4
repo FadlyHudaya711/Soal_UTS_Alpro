@@ -58,3 +58,31 @@ int main() {
 
     return 0;
 }
+
+/*
+ALGORITMA PENYELESAIAN:
+1. Input jumlah babak (N).
+2. Input string hasil pertandingan (S) sebanyak N karakter.
+   - 'A' artinya pemain A menang.
+   - 'B' artinya pemain B menang.
+   - 'C' artinya seri (draw).
+3. Inisialisasi poin dan streak (jumlah kemenangan beruntun) untuk kedua pemain.
+4. Lakukan perulangan sebanyak N babak:
+   a. Jika hasil adalah 'A':
+      - Tambah 3 poin ke pemain A.
+      - Tambah streak_A, reset streak_B.
+      - Jika streak_A mencapai 3, beri bonus 2 poin dan reset streak_A.
+   b. Jika hasil adalah 'B':
+      - Tambah 3 poin ke pemain B.
+      - Tambah streak_B, reset streak_A.
+      - Jika streak_B mencapai 3, beri bonus 2 poin dan reset streak_B.
+   c. Jika hasil adalah 'C':
+      - Tambah 1 poin ke masing-masing pemain.
+      - Reset kedua streak.
+   d. Jika ada karakter selain 'A', 'B', atau 'C', tampilkan pesan error dan hentikan program.
+5. Setelah seluruh babak selesai, tampilkan total poin kedua pemain.
+6. Tentukan pemenang berdasarkan poin:
+   - Jika poinA > poinB → pemain A menang.
+   - Jika poinB > poinA → pemain B menang.
+   - Jika sama → pertandingan seri.
+*/
