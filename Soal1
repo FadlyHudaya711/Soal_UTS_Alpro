@@ -50,7 +50,7 @@ int main() {
 }
 
 /*
-==================== ALGORITMA PENYELESAIAN =====================
+ALGORITMA PENYELESAIAN
 
 1. Input nomor kartu digital sebagai string agar bisa diakses per karakter.
 2. Hitung panjang dan awalan untuk menentukan jenis kartu:
@@ -64,6 +64,4 @@ int main() {
    d. Tambahkan digit-digit yang tidak dikalikan (posisi ganjil dari belakang).
 4. Jika total akhir habis dibagi 10, kartu dianggap valid.
 5. Cetak jenis kartu dan status validasi.
-
-=================================================================
 */
